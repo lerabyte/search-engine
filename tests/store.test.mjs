@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+const memory=new Map();
+globalThis.localStorage={getItem:k=>memory.get(k)||null,setItem:(k,v)=>memory.set(k,v)};
+const store=await import('../src/store.js');
+test('fresh state is empty',()=>assert.deepEqual(store.state.completed,[]));
+test('sanitization filters invalid day numbers and duplicate completions',()=>assert.deepEqual(store.sanitize({version:1,completed:[1,1,2,10,'3',-1]}).completed,[1,2]));
+test('unsupported versions do not silently enter state',()=>assert.equal(store.sanitize({version:2,completed:[1]}).completed.length,0));
+test('notes are bounded',()=>assert.equal(store.sanitize({version:1,notes:{1:'a'.repeat(9000)}}).notes[1].length,8000));
+test('answers reject out-of-range choice indices',()=>assert.deepEqual(store.sanitize({version:1,answers:{1:[0,99,'1']}}).answers[1],[0,null,null]));
+test('progress operations persist and restore',()=>{store.markLab(1);store.answer(1,0,1);store.note(1,'I understand tokens.');store.complete(1);store.save();const backup=JSON.parse([...memory.values()][0]);store.reset();assert.equal(store.state.completed.length,0);store.restore(backup);assert.deepEqual(store.state.completed,[1]);assert.equal(store.state.notes[1],'I understand tokens.');});
+test('corrupt backup fails clearly',()=>assert.throws(()=>store.restore({foo:'bar'}),/supported/));

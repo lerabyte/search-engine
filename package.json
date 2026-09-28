@@ -1,0 +1,20 @@
+{
+  "name": "search-engine",
+  "version": "1.0.1",
+  "private": true,
+  "description": "A colorful, hands-on seven-day search-engine course by lerabyte.",
+  "type": "module",
+  "license": "MIT",
+  "author": "lerabyte",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs dist",
+    "test": "node --test tests/*.test.mjs",
+    "build:standalone": "node scripts/build-standalone.mjs"
+  }
+}

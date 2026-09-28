@@ -1,0 +1,18 @@
+SEARCH-ENGINE — OPEN YOUR COURSE
+
+1. Extract this ZIP.
+2. Open the search-engine folder.
+3. Double-click index.html.
+
+That is it. No terminal, Node.js, localhost, or server.
+You can also keep index.html as a single file on your Desktop.
+If it opens in an editor, right-click > Open with > your web browser.
+
+All seven core lessons and experiments are included offline.
+The optional pretrained model in Day 2 and external reading links need internet.
+
+Keep a backup of your notes/progress using My builder notes > Back up progress.
+Save it before moving or renaming the HTML file, or clearing browser data.
+
+Developers: see README.md. The modular source, tests, examples, and Pages
+workflow remain included; the app has not been published to your account.
