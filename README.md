@@ -2,7 +2,7 @@
 
 ### What happens after you hit search? Let’s build it and find out.
 
-A colorful, interactive seven-day course by **@lerabyte**. Students can read a lesson, change a real experiment, inspect the code, check their understanding, and keep their own builder notes.
+Welcome!
 
 ![Course map](docs/course-preview.png)
 
